@@ -16,8 +16,9 @@ export default class ValidateUser {
     const [valid, property] = this.validateProperties(user);
 
     if (!valid) {
-      // eslint-disable-next-line no-useless-escape
-      return `\"${property}\" is required`;
+      return `"${property}" is required`;
+      // `\${${foo}}`
+      // `$\{${foo}}`;
     }
   }
 }
