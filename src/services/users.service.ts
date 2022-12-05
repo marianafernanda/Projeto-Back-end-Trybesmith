@@ -12,6 +12,16 @@ class UserService {
   public create(user: User): Promise<User> {
     return this.model.create(user);
   }
+
+  public async getByUsername(username: string): Promise<User> {
+    const user = await this.model.getByUsername(username);
+    return user;
+  }
+
+  public async getByPassword(password: string): Promise<User> {
+    const user = await this.model.getByPassword(password);
+    return user;
+  }
 }
 
 export default UserService;

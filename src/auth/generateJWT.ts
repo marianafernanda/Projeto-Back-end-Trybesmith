@@ -9,7 +9,7 @@ export default class GenerateJWT {
   }
 
   public token(user: User): string {
-    const token = sign({ data: { userId: user.id } }, this.secret);
+    const token = sign({ data: { id: user.id, username: user.username } }, this.secret);
     return token;
   }
 }

@@ -18,4 +18,20 @@ export default class UserModel {
     const { insertId } = dataInserted;
     return { id: insertId, ...user };
   }
+
+  public async getByUsername(username: string): Promise<User> {
+    const result = await this.connection
+      .execute('SELECT * FROM Trybesmith.Users WHERE username=?;', [username]);
+    const [rows] = result;
+    const [book] = rows as User[];
+    return book;
+  }
+
+  public async getByPassword(password: string): Promise<User> {
+    const result = await this.connection
+      .execute('SELECT * FROM Trybesmith.Users WHERE password=?;', [password]);
+    const [rows] = result;
+    const [book] = rows as User[];
+    return book;
+  }
 }
