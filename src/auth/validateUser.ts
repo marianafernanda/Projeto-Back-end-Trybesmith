@@ -17,8 +17,6 @@ export default class ValidateUser {
 
     if (!valid) {
       return `"${property}" is required`;
-      // `\${${foo}}`
-      // `$\{${foo}}`;
     }
   }
 }
