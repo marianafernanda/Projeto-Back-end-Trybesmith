@@ -2,7 +2,7 @@ import User from '../interfaces/user.interface';
 
 const properties = ['username', 'password'];
 
-export default class ValidateUser {
+export default class ValidateLogin {
   static validateProperties(user: User): [boolean, string | null] {
     for (let i = 0; i < properties.length; i += 1) {
       if (!Object.prototype.hasOwnProperty.call(user, properties[i])) {
@@ -12,7 +12,7 @@ export default class ValidateUser {
     return [true, null];
   }
 
-  static validationUser(user: User): void | string {
+  static validationLogin(user: User): void | string {
     const [valid, property] = this.validateProperties(user);
 
     if (!valid) {

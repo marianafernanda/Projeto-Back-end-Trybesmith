@@ -3,6 +3,7 @@ import ProductController from './controllers/products.controller';
 import UserController from './controllers/users.controller';
 import OrderController from './controllers/order.controller';
 import LoginController from './controllers/login.controller';
+import validateUser from './middlewares/validateUser';
 
 const app = express();
 
@@ -15,7 +16,7 @@ const loginController = new LoginController();
 
 app.post('/products', productsController.create);
 app.get('/products', productsController.getAll);
-app.post('/users', usersController.create);
+app.post('/users', validateUser, usersController.create);
 app.get('/orders', ordersController.getAll);
 app.post('/login', loginController.login);
 

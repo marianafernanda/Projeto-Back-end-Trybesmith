@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import UserService from '../services/users.service';
 import GenerateJWT from '../auth/generateJWT';
-import ValidateUser from '../auth/validateUser';
+import ValidateLogin from '../auth/validateLogin';
 
 export default class LoginController {
   constructor(private userService = new UserService()) {}
@@ -9,7 +9,7 @@ export default class LoginController {
   public login = async (req: Request, res: Response) => {
     const user = req.body;
 
-    const validateData = ValidateUser.validationUser(user);
+    const validateData = ValidateLogin.validationLogin(user);
 
     if (typeof validateData === 'string') {
       return res.status(400).json({ message: validateData });
