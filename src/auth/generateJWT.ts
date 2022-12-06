@@ -9,7 +9,8 @@ export default class GenerateJWT {
   }
 
   public token(user: User): string {
-    const token = sign({ data: { id: user.id, username: user.username } }, this.secret);
+    const payload = { id: user.id, username: user.username };
+    const token = sign(payload, this.secret);
     return token;
   }
 }

@@ -4,6 +4,8 @@ import UserController from './controllers/users.controller';
 import OrderController from './controllers/order.controller';
 import LoginController from './controllers/login.controller';
 import validateUser from './middlewares/validateUser';
+import validateToken from './auth/validateToken';
+import validateOrder from './auth/validateOrder';
 
 const app = express();
 
@@ -19,5 +21,6 @@ app.get('/products', productsController.getAll);
 app.post('/users', validateUser, usersController.create);
 app.get('/orders', ordersController.getAll);
 app.post('/login', loginController.login);
+app.post('/orders', validateToken, validateOrder, ordersController.create);
 
 export default app;

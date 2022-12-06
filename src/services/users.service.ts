@@ -22,6 +22,11 @@ class UserService {
     const user = await this.model.getByPassword(password);
     return user;
   }
+
+  public async getIdByUsername(username: string): Promise<number> {
+    const id = await this.model.getIdByUsername(username);
+    return id;
+  }
 }
 
 export default UserService;

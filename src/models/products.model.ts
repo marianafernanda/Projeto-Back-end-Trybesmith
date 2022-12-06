@@ -24,4 +24,11 @@ export default class ProductModel {
     const [row] = result;
     return row as Product[];
   }
+
+  public async update(orderId: number, id: number) {
+    await this.connection.execute(
+      'UPDATE Trybesmith.Products SET orderId=? WHERE id=?',
+      [orderId, id],
+    );
+  }
 }
